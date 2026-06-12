@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action", "userMessage", "tableName", "sheetName", "folderPath", "startRow", "endRow", "reasoning"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["reply", "gfind", "gsalarysync", "help"]
+    },
+    "userMessage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tableName": {
+      "type": ["string", "null"]
+    },
+    "sheetName": {
+      "type": ["string", "null"]
+    },
+    "folderPath": {
+      "type": ["string", "null"]
+    },
+    "startRow": {
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "endRow": {
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "reasoning": {
+      "type": ["string", "null"]
+    }
+  }
+}

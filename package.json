@@ -1,0 +1,12 @@
+{
+  "name": "google-sheets-telegram-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Telegram-first Google Sheets bot with deterministic salary workflows",
+  "scripts": {
+    "start": "node src/app.js",
+    "check": "node --check src/app.js",
+    "health": "node src/health.js"
+  }
+}
