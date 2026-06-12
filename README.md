@@ -1,44 +1,32 @@
 # Google Sheets Telegram Bot
 
-Узкий Telegram-first бот для работы с Google Drive / Sheets / Docs без `OpenClaw`.
+Telegram-бот для работы с Google Drive и Sheets. Поиск таблиц, синхронизация данных, автоматизация рутины с таблицами прямо из чата.
 
-## Что умеет
+## Features
 
-- `/start` и `/help`
-- `/health` — проверка Telegram + Google auth
-- `/gfind <название таблицы>` — поиск таблицы по имени в sandbox-папке
-- `/gsalarysync <таблица> [| <лист>] [| <startRow>] [| <endRow>]`
-- `/gsalarysync <папка > подпапка> | <таблица> | <лист> [| <startRow>] [| <endRow>]`
+- Поиск таблиц по имени в Google Drive
+- Синхронизация данных из таблиц (автоматическая нормализация, форматирование)
+- Health-check Telegram + Google авторизации
+- Авторизация через сервисный аккаунт (без пользовательского логина)
+- Фоновый запуск через systemd
 
-По salary sync бот:
+## Tech Stack
 
-- нормализует пробелы в `A:I`
-- переносит значения из `H:I` в `A:B`
-- сопоставляет по ФИО
-- добавляет новых сотрудников
-- сортирует список по алфавиту
-- выравнивает новые ФИО по правому краю
+- Node.js
+- Google Sheets API
+- Google Drive API
+- Telegram Bot API (long polling)
 
-## Структура
-
-- `src/config.js` — env и валидация конфига
-- `src/logger.js` — логи
-- `src/google/` — Google auth + Drive + Sheets
-- `src/telegram/` — Telegram API и polling
-- `src/commands/` — команды бота
-- `src/app.js` — точка входа
-- `src/health.js` — health-check
-
-## Запуск
+## Quick Start
 
 ```bash
-cd /home/user/google-sheets-telegram-bot
 cp .env.example .env
+# Заполни токены в .env
 node src/app.js
 ```
 
-## systemd
+## Deploy
 
-Для установки как сервиса используется:
-
-`scripts/install-systemd-service.sh`
+```bash
+./scripts/install-systemd-service.sh
+```
